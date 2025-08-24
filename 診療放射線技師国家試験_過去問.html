@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国試過去問</title>
+    <!-- Favicon (Tab Icon) - Placeholder for kero.png -->
+    <link rel="icon" type="image/png" href="kero.png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a clean look */
+        body {
+            font-family: "Inter", sans-serif;
+        }
+        /* Ensure table cells wrap content on smaller screens if necessary */
+        td, th {
+            word-break: break-word;
+        }
+        /* Style for the toggle switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+        /* Custom highlight class for clicked row */
+        .highlighted-row {
+            background-color: #1e40af; /* A darker blue for highlight */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 p-4 sm:p-6 md:p-8 flex items-center justify-center min-h-screen">
+    <div class="container mx-auto p-4 bg-gray-800 rounded-lg shadow-xl max-w-full w-full">
+        <h1 class="text-2xl sm:text-3xl font-bold text-center mb-6 text-white">
+            診療放射線技師国家試験 問題・正答リンク
+        </h1>
+
+        <!-- Toggle Switch for Link Behavior -->
+        <div class="flex items-center justify-end mb-4 text-white">
+            <span class="mr-2 text-sm sm:text-base">同じタブで開く</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="openNewTabToggle" checked>
+                <span class="slider round"></span>
+            </label>
+            <span class="ml-2 text-sm sm:text-base">新しいタブで開く</span>
+        </div>
+
+        <div class="overflow-x-auto rounded-lg shadow-md">
+            <table class="min-w-full bg-gray-800 border-collapse">
+                <thead class="bg-blue-600 text-white">
+                    <tr>
+                        <th class="py-3 px-2 text-left text-xs sm:text-sm font-semibold rounded-tl-lg">回数</th>
+                        <th class="py-3 px-2 text-left text-xs sm:text-sm font-semibold">メインリンク</th>
+                        <th class="py-3 px-2 text-left text-xs sm:text-sm font-semibold">午前</th>
+                        <th class="py-3 px-2 text-left text-xs sm:text-sm font-semibold">午前別紙</th>
+                        <th class="py-3 px-2 text-left text-xs sm:text-sm font-semibold">午後</th>
+                        <th class="py-3 px-2 text-left text-xs sm:text-sm font-semibold">午後別紙</th>
+                        <th class="py-3 px-2 text-left text-xs sm:text-sm font-semibold rounded-tr-lg">正答</th>
+                    </tr>
+                </thead>
+                <tbody id="examTableBody">
+                    <!-- 第77回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第77回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp250428-06.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06a_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06b_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp250428-06seitou.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第76回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第76回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp240424-06.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06a_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06b_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp240424-06seitou.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第75回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第75回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp230524-06.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06a_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06b_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp230524-06seitou.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第74回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第74回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp220421-06.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp220421-06a_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp220421-06a_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp220421-06b_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp220421-06b_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp220421-06seitou.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第73回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第73回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp210416-06.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp210416-06a_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp210416-06a_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp210416-06b_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp210416-06b_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp210416-06seitou.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第72回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第72回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp200414-06.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2010/04/dl/tp_siken_62_rad_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2010/04/dl/tp_siken_62_rad_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2010/04/dl/tp_siken_62_rad_03.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2010/04/dl/tp_siken_62_rad_04.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2010/04/dl/tp_siken_62_rad_05.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第71回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第71回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp190415-06.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp190415-06a_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp190415-06a_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp190415-06b_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp190415-06b_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp190415-06seitou.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第70回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第70回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp180511-06.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp180511-06a_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp180511-06a_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp180511-06b_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp180511-06b_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp180511-06seitou.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第69回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第69回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp170425-06.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp170425-06a_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp170425-06a_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp170425-06b_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp170425-06b_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp170425-06seitou.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第68回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第68回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp160411-04.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp160411-04am_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp160411-04am_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp160411-04pm_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp160411-04pm_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp160411-04seitou.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第67回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第67回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp150511-04.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp150511-04am_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp150511-04am_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp150511-04pm_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp150511-04pm_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp150511-04seitou.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第66回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第66回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp140512-04.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp140512-04a.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp140512-04b.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp140512-04c.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp140512-04d.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp140512-04f.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第65回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第65回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp130422-04.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp130422-04a.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp130422-04b.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp130422-04c.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp130422-04d.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/dl/tp130422-04e.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第64回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第64回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2012/04/tp0420-04.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2012/04/dl/tp_siken_64_rad_am1.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2012/04/dl/tp_siken_64_rad_am2.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2012/04/dl/tp_siken_64_rad_pm1.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2012/04/dl/tp_siken_64_rad_pm2.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2012/04/dl/tp_siken_64_rad.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第63回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第63回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2011/04/tp0414-4.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2011/04/dl/tp_siken_63_rad_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2011/04/dl/tp_siken_63_rad_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2011/04/dl/tp_siken_63_rad_03.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2011/04/dl/tp_siken_63_rad_04.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2011/04/dl/tp_siken_63_rad_05.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第62回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第62回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2010/04/tp0414-4.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2010/04/dl/tp_siken_62_rad_01.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2010/04/dl/tp_siken_62_rad_02.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2010/04/dl/tp_siken_62_rad_03.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2010/04/dl/tp_siken_62_rad_04.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2010/04/dl/tp_siken_62_rad_05.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第61回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第61回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2009/04/tp0422-6.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2009/04/dl/tp0422-6a.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2009/04/dl/tp0422-6b.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2009/04/dl/tp0422-6c.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2009/04/dl/tp0422-6d.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2009/04/dl/tp0422-6e.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第60回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第60回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2008/04/tp0418-6.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2008/04/dl/tp0418-6a.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2008/04/dl/tp0418-6c.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2008/04/dl/tp0418-6b.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2008/04/dl/tp0418-6d.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2008/04/dl/tp0418-6e.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第59回 -->
+                    <tr class="border-b border-gray-700 hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200">第59回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2007/04/tp0427-3.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2007/04/dl/tp0427-3a.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2007/04/dl/tp0427-3c.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2007/04/dl/tp0427-3b.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2007/04/dl/tp0427-3d.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2007/04/dl/tp0427-3e.pdf">PDF</a>
+                        </td>
+                    </tr>
+                    <!-- 第58回 -->
+                    <tr class="hover:bg-blue-700">
+                        <td class="py-3 px-2 text-xs sm:text-sm text-gray-200 rounded-bl-lg">第58回</td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2006/04/tp0417-2.html">メイン</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2006/04/dl/tp0417-2a1.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2006/04/dl/tp0417-2a2.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2006/04/dl/tp0417-2b1.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2006/04/dl/tp0417-2b2.pdf">PDF</a>
+                        </td>
+                        <td class="py-3 px-2 text-xs sm:text-sm text-blue-400 hover:underline">
+                            <a href="http://www.mhlw.go.jp/topics/2006/04/dl/tp0417-2c.pdf">PDF</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+		<div class="mt-8 text-center text-gray-500 text-xs">
+            <p>このサイトはGeminiによって作成されました。</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openNewTabToggle = document.getElementById('openNewTabToggle');
+            const tableBody = document.getElementById('examTableBody');
+            let lastClickedRow = null; // To keep track of the last clicked row
+
+            // Function to apply link behavior (setting target attributes)
+            function applyLinkBehavior() {
+                const shouldOpenInNewTab = openNewTabToggle.checked;
+                const links = tableBody.querySelectorAll('a[href]');
+
+                links.forEach(link => {
+                    if (shouldOpenInNewTab) {
+                        link.setAttribute('target', '_blank');
+                        link.setAttribute('rel', 'noopener noreferrer');
+                    } else {
+                        link.removeAttribute('target');
+                        link.removeAttribute('rel');
+                    }
+                });
+            }
+
+            // Function to handle row highlighting and navigation
+            function handleLinkAndHighlight(event) {
+                // Highlight logic
+                const clickedRow = event.target.closest('tr');
+                if (lastClickedRow && lastClickedRow !== clickedRow) {
+                    lastClickedRow.classList.remove('highlighted-row');
+                }
+                if (clickedRow) {
+                    clickedRow.classList.add('highlighted-row');
+                    lastClickedRow = clickedRow;
+                }
+
+                // Navigation logic
+                const link = event.target.closest('a[href]');
+                if (link) { // Ensure a link was actually clicked within the row
+                    const shouldOpenInNewTab = openNewTabToggle.checked;
+
+                    if (event.button === 0) { // Left-click
+                        event.preventDefault(); // Prevent default for left-click to control navigation
+                        if (shouldOpenInNewTab) {
+                            window.open(link.href, '_blank');
+                        } else {
+                            window.location.href = link.href;
+                        }
+                    } else if (event.button === 1) { // Middle-click (auxclick)
+                        // Allow browser's default behavior for middle-click (usually opens in new tab)
+                        // No preventDefault needed here for middle-click
+                    }
+                }
+            }
+
+            // Initial setup when the page loads
+            applyLinkBehavior(); // Set initial target attributes
+
+            // Add event listener to the toggle switch to change behavior dynamically
+            openNewTabToggle.addEventListener('change', applyLinkBehavior);
+
+            // Use event delegation for both highlighting and navigation on the table body
+            tableBody.addEventListener('click', handleLinkAndHighlight);
+            tableBody.addEventListener('auxclick', handleLinkAndHighlight); // For middle-click
+
+            // Handle browser's back/forward cache (BFcache) to ensure state is correct
+            window.addEventListener('pageshow', (event) => {
+                if (event.persisted) {
+                    // If page is restored from BFcache, re-apply link behaviors
+                    // This ensures the target attributes are correct based on the toggle state
+                    applyLinkBehavior();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
